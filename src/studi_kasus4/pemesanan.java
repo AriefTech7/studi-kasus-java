@@ -1,24 +1,36 @@
 package studi_kasus4;
 
 public class pemesanan {
-    public String nama_layanan,tanggal,status="working";
+    public String tanggal,status="working";
     public double totalBiaya=0;
+    private layanan[] daftarLayanan;
+    private user pemesan;
 
-    public pemesanan(String nama,String tanggal){
-        this.nama_layanan=nama;
+    public pemesanan(user pemesan, String tanggal, layanan[] daftarLayanan){
+        this.pemesan=pemesan;
+        this.daftarLayanan=daftarLayanan;
         this.tanggal=tanggal;
+        total_biaya();
     }
 
-    public void total_biaya(double biaya){
-        totalBiaya+=biaya;
-    }
-    public double info_biaya(){
-        return  totalBiaya;
+    public void total_biaya(){
+        for (int i = 0; i < daftarLayanan.length; i++) {
+            if(daftarLayanan[i] != null){
+                totalBiaya+=daftarLayanan[i].getHarga();
+            }
+        }
     }
     public String struk_pemesanan(){
-        return "nama layanan : "+nama_layanan+
-                "\ntanggal : "+tanggal+
-                "\nstatus : "+status+
-                "\ntotal biaya : "+info_biaya();
+        String struk = "Pemesan : "+pemesan.getNama()+
+                "\nTanngal : "+tanggal+
+                "\nStatus : "+status+
+                "\n--Daftar Layanana---\n";
+        for (int i = 0; i < daftarLayanan.length; i++) {
+            if(daftarLayanan[i] != null){
+                struk+= "- "+daftarLayanan[i].getNama() + "Rp"+daftarLayanan[i].getHarga()+"\n";
+            }
+        }
+        struk+="Total Biaya : Rp"+totalBiaya;
+        return struk;
     }
 }

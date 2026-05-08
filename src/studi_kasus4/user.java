@@ -1,8 +1,7 @@
 package studi_kasus4;
-
 public class user {
     private String id,nama,kontak;
-    public Boolean penyedia=true,pemesan=false;
+    public Boolean penyedia=false,pemesan=true;
     public layanan[] jasa;
 
     public user(String id,String nama, String kontak, layanan[] jasa){

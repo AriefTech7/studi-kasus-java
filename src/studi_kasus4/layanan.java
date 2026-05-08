@@ -47,10 +47,7 @@ public class layanan {
     public String info(){
         return "nama= "+nama+
                 "\ndeskripsi= "+deskripsi+
-                "\nestimasi= "+estimasi+
+                "\nestimasi= "+estimasi+" hari "+
                 "\nharga= "+harga;
     }
-
-
-
 }
